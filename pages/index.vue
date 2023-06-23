@@ -2,6 +2,7 @@
 import PsychologistCard from "@/components/cards/PsychologistCard.vue";
 import { onMounted, reactive, ref, watch } from "vue";
 import { useUsersStore } from "@/stores/users";
+import DropDownSvgIcon from "assets/icons/DropDownSvgIcon.vue";
 
 const router = useRouter();
 const usersStore = useUsersStore();
@@ -185,13 +186,16 @@ onMounted(() => {
     <div
       class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 items-center mt-4 my-10 gap-4"
     >
-      <div class="flex flex-col">
+      <div class="flex flex-col relative dropDown__wrp">
+        <div class="absolute right-2 top-[40%]">
+          <DropDownSvgIcon  />
+        </div>
         <select
           @change="selectChange(types.selected, 'type')"
           name="type"
           id="type"
           v-model="types.selected"
-          class="border border-gray-300 rounded-md p-2"
+          class="border border-gray-300 rounded-md px-4 py-2 dropDown__wrp__select"
         >
           <option
             v-for="(option, i) in types.options"
@@ -285,3 +289,14 @@ onMounted(() => {
     <!--    <PsychologistCard/>-->
   </div>
 </template>
+
+<style scoped>
+.dropDown__wrp {
+  position: relative;
+}
+
+.dropDown__wrp__select{
+  -webkit-appearance: none;
+  background: white;
+}
+</style>
