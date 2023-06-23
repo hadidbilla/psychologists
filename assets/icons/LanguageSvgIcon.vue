@@ -4,11 +4,20 @@
 
 <template>
 
-  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <g id="flag">
-      <path id="Icon" d="M4 15C4 15 5 14 8 14C11 14 13 16 16 16C19 16 20 15 20 15V3C20 3 19 4 16 4C13 4 11 2 8 2C5 2 4 3 4 3V15ZM4 15V22" stroke="#444CE7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-    </g>
-  </svg>
+  <svg  height="16" width="16" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg"
+       viewBox="0 0 512 512" xml:space="preserve">
+<g>
+	<g>
+		<polygon points="256,28.444 0,157.874 256,284.444 512,157.874 		"/>
+	</g>
+</g>
+    <g>
+	<g>
+		<path d="M256,332.042L56.889,233.597V384c0,47.128,89.145,99.556,199.111,99.556S455.111,431.128,455.111,384V233.597L256,332.042
+			z"/>
+	</g>
+</g>
+</svg>
 
 </template>
 
