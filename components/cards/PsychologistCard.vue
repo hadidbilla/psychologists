@@ -1,5 +1,6 @@
 <script setup>
 import PlaySvgIcon from "assets/icons/PlaySvgIcon.vue";
+import DummyImage from "@/assets/images/dumy.jpg";
 
 const props = defineProps({
   psychologist: {
@@ -26,7 +27,7 @@ const toggleDates = () => {
   <div class="border shadow p-3 text-center">
     <div class="flex justify-center">
       <div class="relative">
-        <img :src="psychologist?.image" alt="" class="h-[150px] w-[150px] rounded-full object-cover">
+        <img :src="DummyImage" alt="" class="h-[150px] w-[150px] rounded-full object-cover">
         <PlaySvgIcon class="w-12 absolute bottom-0 right-0" />
       </div>
     </div>

@@ -8,6 +8,7 @@ import GenderSvgIcon from "assets/icons/GenderSvgIcon.vue";
 import LanguageSvgIcon from "assets/icons/LanguageSvgIcon.vue";
 import SearchSvgIcon from "assets/icons/SearchSvgIcon.vue";
 import TypeSvgIcon from "assets/icons/TypeSvgIcon.vue";
+import Spinner from "~/components/shared/Spinner.vue";
 
 const router = useRouter();
 const usersStore = useUsersStore();
@@ -19,6 +20,7 @@ const specialtiesSelect = ref(null)
 const genderSelect = ref(null)
 const languageSelect = ref(null)
 const searchInput = ref(null)
+const isLoading = ref(true)
 
 const types = reactive({
   options: [
@@ -171,6 +173,7 @@ watch(
 
 const fetchUsers = async () => {
   try {
+    isLoading.value = true
     let res = await usersStore.fetchUsers();
     users = res;
     if(queryParamList.value.length){
@@ -193,6 +196,8 @@ const fetchUsers = async () => {
     }
   } catch (e) {
     console.log(e);
+  } finally {
+    isLoading.value = false
   }
 };
 
@@ -346,17 +351,18 @@ const focusInput = (selectType) =>{
     </div>
     <div
       class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+      v-if="filterData.length"
     >
-      <template v-if="filterData.length">
         <PsychologistCard
           v-for="user in filterData"
           :psychologist="user"
           :key="user.name"
         />
-      </template>
-      <template v-else>
-        <div class="col-span-4 text-center">No data found</div>
-      </template>
+
+    </div>
+    <div class="flex justify-center" v-else>
+      <Spinner v-if="isLoading" />
+      <div class="col-span-4 text-center" v-else>No data found</div>
     </div>
     <!--    <PsychologistCard/>-->
   </div>
